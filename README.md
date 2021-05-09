@@ -9,7 +9,7 @@ Character(s) cannot be encoded, output **highlighted** that character(s) and **U
 
 ## Usage
 
-```
+```zsh
 $ git clone https://github.com/ShingoYadomoto/fjis.git
 $ go build -o fjis main.go
 $ echo 'aÈaÄa' | ./fjis
