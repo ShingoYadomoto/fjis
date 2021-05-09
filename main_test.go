@@ -23,6 +23,11 @@ func Test_echoResult(t *testing.T) {
 				"============\n" +
 				"[U+00A5 '¥']\n",
 		},
+		{
+			name: "",
+			args: args{r: bytes.NewBuffer([]byte("bbb\n"))},
+			wantW: "bbb\n",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -31,6 +36,7 @@ func Test_echoResult(t *testing.T) {
 			if gotW := w.String(); gotW != tt.wantW {
 				t.Errorf("echoResult() = %v, want %v", gotW, tt.wantW)
 			}
+      ngmap = map[string]int{} 
 		})
 	}
 }
@@ -49,6 +55,12 @@ func Test_echoHighlighted(t *testing.T) {
 			name:    "",
 			args:    args{r: bytes.NewBuffer([]byte("¥aaa\n"))},
 			wantW:   "\u001B[31m¥\u001B[0maaa\n",
+			wantErr: false,
+		},
+		{
+			name:    "",
+			args:    args{r: bytes.NewBuffer([]byte("bbb\n"))},
+			wantW:   "bbb\n",
 			wantErr: false,
 		},
 	}
@@ -74,6 +86,11 @@ func Test_echoUnicodeFormat(t *testing.T) {
 		wantW   string
 		wantErr bool
 	}{
+		{
+			name:  "",
+			ngmap: map[string]int{},
+			wantW: "",
+		},
 		{
 			name:  "",
 			ngmap: map[string]int{"¥": 0},
