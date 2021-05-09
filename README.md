@@ -6,3 +6,11 @@ character(s) cannot be encoded, output **highlighted** that character(s) and **U
 
 
 ![console image](console.png)
+
+## Usage
+
+```
+$ git clone https://github.com/ShingoYadomoto/fjis.git
+$ go build -o fjis main.go
+$ echo 'aÈaÄa' | ./fjis
+```
