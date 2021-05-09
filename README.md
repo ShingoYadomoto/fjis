@@ -11,6 +11,7 @@ Character(s) cannot be encoded, output **highlighted** that character(s) and **U
 
 ```zsh
 $ git clone https://github.com/ShingoYadomoto/fjis.git
+$ cd fjis
 $ go build -o fjis main.go
 $ echo 'aÈaÄa' | ./fjis
 ```
