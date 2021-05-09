@@ -25,7 +25,8 @@ func main() {
 func echoResult(r io.Reader, w io.Writer) {
 	err := echoHighlighted(r, w)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
+		return
 	}
 
 	if len(ngmap) == 0 {
@@ -34,12 +35,14 @@ func echoResult(r io.Reader, w io.Writer) {
 
 	_, err = fmt.Fprintln(w, delimiter)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
+		return
 	}
 
 	err = echoUnicodeFormat(w)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
+		return
 	}
 }
 
